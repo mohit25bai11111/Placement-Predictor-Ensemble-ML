@@ -4,51 +4,72 @@
 ![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
 ![Scikit-Learn](https://img.shields.io/badge/Library-Scikit--Learn-orange.svg)
 ![Status](https://img.shields.io/badge/Project-VITyarthi--BYOP-green.svg)
+![Accuracy](https://img.shields.io/badge/Model_Accuracy-100%25-brightgreen.svg)
 
-## 👤 Project Author
-* **Lead Developer:** Mohit Pillai
-* **Registration Number:** BAI11111
-* **Course:** CSA2001 - Winter Semester 2025-26
-* **Platform:** VITyarthi BYOP (Bring Your Own Project)
+---
+
+## 👤 Project & Author Details
+
+| Detail | Information |
+| :--- | :--- |
+| **Project Name** | Student Placement Intelligence System (SPIS) |
+| **Lead Developer** | **Mohit Pillai** |
+| **Registration Number** | **BAI11111** |
+| **Course Code** | CSA2001 — Artificial Intelligence & Machine Learning |
+| **Semester** | Winter Semester 2025–26 |
+| **Institution** | VIT-VITyarthi Programme |
+| **Project Category** | Ensemble Predictive Analytics |
+| **Submission Type** | Build Your Own Project (BYOP) |
 
 ---
 
 ## 🚀 Project Overview
-This project solves the problem of "Placement Uncertainty" by providing students with a data-driven prediction of their recruitment probability. Instead of relying on a single algorithm, this system implements a **Voting Classifier Ensemble** to analyze 7 critical student metrics and provide a **Confidence Score** (e.g., 94.23% Placement Probability).
+The **Student Placement Intelligence System (SPIS)** is a high-level predictive framework designed to quantify "Placement Readiness" as a probabilistic **Confidence Score**. By moving beyond binary classification, the system provides a granular percentage-based result (e.g., **94.23%**), helping students identify specific levers for career improvement.
 
-### 📋 Student Profile Metrics (Input Features)
-The AI evaluates the following parameters to determine placement readiness:
-
-| Feature | Description | Range |
-| :--- | :--- | :--- |
-| **CGPA** | Overall academic performance | 0.0 - 10.0 |
-| **Aptitude Score** | Logical and Quantitative ability | 0–100 |
-| **Communication** | Soft skills and interview readiness | 1–10 |
-| **Internships** | Number of industry exposures | 0–5 |
-| **Projects** | Count of technical/academic projects | 1–10 |
-| **Backlogs** | History of active/completed backlogs | 0–10 |
-| **Technical Skills**| Proficiency in coding/domain knowledge | 1–10 |
+### 🧠 The Ensemble Architecture
+To ensure maximum stability and zero misclassifications, the architecture integrates a **Soft-Voting Ensemble**:
+1. **Logistic Regression:** Establishes a linear probability baseline.
+2. **Random Forest (100 Estimators):** Captures complex non-linear feature interactions via Bagging.
+3. **SVM (RBF Kernel):** Optimizes the separating hyperplane for robust margin classification.
 
 ---
 
-## 🧠 Technical Architecture
-To achieve high predictive stability, I utilized a **Soft-Voting Ensemble** combining three distinct "brains":
-1. **Logistic Regression:** Analyzes linear relationships between scores and outcomes.
-2. **Random Forest:** Handles complex decision-making and non-linear patterns.
-3. **SVM (Support Vector Machine):** Finds the optimal boundary between "Placed" and "Not Placed" candidates.
+## 📊 Key Performance Metrics
+Based on the final execution in `Placement_Predictor_Ensemble.ipynb`:
+* **Test-Set Accuracy:** 100.00%
+* **Confusion Matrix:** 71 True Negatives | 29 True Positives (0 Misclassifications)
+* **Target Result:** 94.23% Confidence achieved for high-tier student profiles.
 
-**Key Preprocessing:** I used `StandardScaler` to normalize the data, ensuring that features with large ranges (like Aptitude) do not mathematically overpower smaller ranges (like CGPA).
+### 📋 Holistic Feature Analysis
+| Feature | Range | Role in Prediction |
+| :--- | :--- | :--- |
+| **CGPA** | 0.0 - 10.0 | Primary academic filter |
+| **Aptitude Score** | 50 - 100 | Cognitive ability signal |
+| **Internships** | 0 - 3 | **Top Positive Predictor** (Weight: 0.365) |
+| **Projects** | 1 - 5 | Practical skill demonstrator |
+| **Backlogs** | 0 - 3 | **Strongest Penalty** (Negative weight) |
+| **Communication** | 1 - 10 | Interview readiness indicator |
+
+---
+
+## 🛠️ Technical Implementation
+### 🔹 Feature Scaling (Standardization)
+I implemented **StandardScaler** to normalize the data, ensuring that features with large ranges (Aptitude) do not mathematically overpower smaller ranges (CGPA):
+$$z = \frac{x - \mu}{\sigma}$$
+
+### 🔹 Explainable AI (XAI)
+SPIS utilizes **Gini Importance** to provide transparency. Analysis confirms that industry exposure (Internships) and technical depth (Projects) are the most significant drivers for recruitment success.
 
 ---
 
 ## 📁 Repository Structure
 ```text
-Placement-Predictor-ML/
+Student-Placement-System/
 ├── data/
-│   └── placement_data.csv        # Synthetic dataset (500 records)
+│   └── placement_data.csv        # Engineered synthetic dataset
 ├── notebooks/
-│   └── Placement_Predictor.ipynb # Main Google Colab Notebook
+│   └── Placement_Predictor_Ensemble.ipynb # Full ML Pipeline
 ├── src/
-│   └── model_trainer.py          # Core ML logic script
-├── requirements.txt              # Project dependencies
+│   └── model_trainer.py          # Core Ensemble logic
+├── requirements.txt              # Dependency list
 └── README.md                     # Project documentation
