@@ -1,3 +1,5 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mohit25bai11111/SPIS-Ensemble-ML/blob/main/notebooks/Placement_Predictor_Ensemble.ipynb)
+
 # 🎓 Student Placement Intelligence System (SPIS)
 **An Ensemble Machine Learning Approach to Career Readiness Prediction**
 
@@ -59,6 +61,8 @@ $$z = \frac{x - \mu}{\sigma}$$
 
 ### 🔹 Explainable AI (XAI)
 SPIS utilizes **Gini Importance** to provide transparency. Analysis confirms that industry exposure (Internships) and technical depth (Projects) are the most significant drivers for recruitment success.
+
+
 
 ---
 
